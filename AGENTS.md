@@ -75,6 +75,9 @@ Record settled answers in project documentation and add tests around them.
 ## Development conventions
 
 - Keep files focused and name scenes, scripts, resources, and tests consistently.
+- Treat `/Resources/` as a local, unversioned source-asset library. Never reference files there from game scenes or scripts.
+- Copy only assets actually used by the game into `/Assets/`; files in `/Assets/` are distributable project content and must retain suitable license/provenance information.
+- Track large binary asset formats in `/Assets/` with Git LFS once LFS is configured for the repository. Commit the repository's `.gitattributes` rules alongside the assets.
 - Add automated tests for pure simulation rules wherever possible, especially state transitions, elapsed-time processing, queue ordering, and resource accounting.
 - Test disconnect/reconnect, server restart, duplicate command, invalid ownership, and clock-skew scenarios for persistent systems.
 - Avoid mixing unrelated refactors into feature changes.
